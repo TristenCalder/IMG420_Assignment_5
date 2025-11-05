@@ -1,0 +1,29 @@
+# Godot specific
+.godot/
+.import/
+.mono/
+*.translation
+*.import
+
+# Build artifacts
+bin/
+obj/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+*.tmp
+*.log
+*.user
+*.suo
+.vs/
+
+# Dotnet
+*.userprefs
+
+# JetBrains
+.idea/
+
+# Other
+.swift-module-cache/
+_GodotBridge/

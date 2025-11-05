@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://lasersystem00001"]
+
+[ext_resource type="Script" path="res://Scripts/LaserDetector.cs" id="1_9px5f"]
+
+[node name="LaserSystem" type="Node2D"]
+script = ExtResource("1_9px5f")
+laser_length = 450.0

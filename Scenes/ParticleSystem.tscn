@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://particlescene000001"]
+
+[ext_resource type="Script" path="res://Scripts/ParticleController.cs" id="1_9t67p"]
+
+[node name="ParticleSystem" type="Node2D"]
+
+[node name="Particles" type="GPUParticles2D" parent="."]
+amount = 200
+one_shot = false
+explosiveness = 0.1
+lifetime = 2.0
+preprocess = 1.0
+script = ExtResource("1_9t67p")
+emitting = true
