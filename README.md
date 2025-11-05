@@ -1,4 +1,6 @@
-# Assignment 5 – Rendering and Physics (Godot 4.5)
+# IMG420_Assignment_5
+
+## Assignment 5 – Rendering and Physics (Godot 4.5)
 
 This Godot 4.5 C# project implements the three required systems from the assignment brief:
 
@@ -23,7 +25,7 @@ This Godot 4.5 C# project implements the three required systems from the assignm
 ## Feature Notes
 
 ### Shader & Particles
-- `Scripts/ParticleController.cs` configures a `GpuParticles2D` emitter and assigns the shader.
+- `Scripts/ParticleController.cs` configures a `GPUParticles2D` emitter and assigns the shader.
 - `Shaders/custom_particle.gdshader` performs:
   - Time-driven horizontal wave distortion (`sin` on UV).
   - UV-based color gradient between configurable start/end colours.
@@ -34,14 +36,17 @@ This Godot 4.5 C# project implements the three required systems from the assignm
 - `Scripts/PhysicsChain.cs` spawns the requested number of chain segments (default 6) and connects each neighbour with a `PinJoint2D`.
 - The first joint pins the chain to a static anchor body to keep it suspended.
 - Force can be injected with `ApplyForceToSegment`, which uses impulses on individual `RigidBody2D` links.
+- Chain links use a low-friction physics material and light mass so the player can easily influence the rope.
 
 ### Raycasting Laser
 - `Scripts/LaserDetector.cs` creates a `RayCast2D` and `Line2D` at runtime.
 - The beam length, colours, and detection target can be configured in the inspector.
 - When the ray collides with the player (looked up via export path or `"player"` group) the beam flashes red, pulses its width, and prints an alarm message.
+- An impact marker shows where the ray stops when it hits an obstacle.
 
 ### Player
 - `Scripts/Player.cs` reads the default Godot input actions (`ui_left`, `ui_right`, `ui_up`, `ui_down`) and uses `MoveAndSlide` for smooth 2D movement.
+- On collision with a `RigidBody2D`, the player injects an impulse so the chain responds to interaction.
 
 ## Usage
 
@@ -57,7 +62,7 @@ The shader mixes two colours based on the particle UV Y coordinate, adds an adju
 ## Physics Parameters
 
 - Link spacing (`SegmentDistance`) defaults to `32`, giving a fairly loose rope.
-- Pin joints use mild softness, damping, and bias to stabilise the chain without making it rigid.
+- Pin joints use mild softness and bias to stabilise the chain without making it rigid.
 - Chain segments run on collision layer 2, while the player remains on layer 1, allowing interactions while keeping the laser focused on the player layer.
 
 ## Raycast Detection
